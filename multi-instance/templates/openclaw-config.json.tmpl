@@ -1,0 +1,65 @@
+{
+  "logging": {
+    "redactSensitive": "tools"
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "anthropic/claude-sonnet-4-6"
+      },
+      "models": {
+        "anthropic/claude-sonnet-4-6": {}
+      },
+      "sandbox": {
+        "mode": "off",
+        "workspaceAccess": "ro",
+        "scope": "agent"
+      }
+    }
+  },
+  "tools": {
+    "deny": [
+      "gateway",
+      "sessions_spawn",
+      "sessions_send"
+    ],
+    "elevated": {
+      "enabled": false
+    },
+    "exec": {
+      "security": "deny"
+    },
+    "fs": {
+      "workspaceOnly": true
+    }
+  },
+  "skills": {
+    "load": {
+      "extraDirs": ["/home/node/shared-skills"]
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "discovery": {
+    "mdns": {
+      "mode": "off"
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "bind": "loopback",
+    "controlUi": {
+      "allowInsecureAuth": false,
+      "dangerouslyDisableDeviceAuth": false
+    },
+    "auth": {
+      "mode": "token"
+    }
+  }
+}

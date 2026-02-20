@@ -1,0 +1,55 @@
+{
+  "gateway": {
+    "mode": "local",
+    "bind": "loopback",
+    "auth": {
+      "mode": "token"
+    },
+    "controlUi": {
+      "allowInsecureAuth": false,
+      "dangerouslyDisableDeviceAuth": false
+    }
+  },
+  "channels": {
+    "telegram": {
+      "dmPolicy": "pairing",
+      "groups": {
+        "*": {
+          "requireMention": true
+        }
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "sandbox": {
+        "mode": "off",
+        "scope": "agent",
+        "workspaceAccess": "ro"
+      }
+    }
+  },
+  "tools": {
+    "deny": ["gateway", "sessions_spawn", "sessions_send"],
+    "fs": {
+      "workspaceOnly": true
+    },
+    "exec": {
+      "security": "deny"
+    },
+    "elevated": {
+      "enabled": false
+    }
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "discovery": {
+    "mdns": {
+      "mode": "off"
+    }
+  },
+  "logging": {
+    "redactSensitive": "tools"
+  }
+}
